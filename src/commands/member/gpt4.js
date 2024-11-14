@@ -9,10 +9,12 @@ module.exports = {
   usage: `${PREFIX}gpt4 <mensagem>`,
   handle: async ({
     fullArgs,
-    sendImageFromURL,
+    sendWaitReact,
     sendSuccessReply,
   }) => {
+    
     await sendWaitReact();
+    
     const herc = new Hercai();
     
     if (!fullArgs.length) {
@@ -24,6 +26,8 @@ module.exports = {
     const response = await herc.question({
       content: `${fullArgs}`,
     });
+    
     await sendSuccessReply(response.reply);
+    
   },
 };
